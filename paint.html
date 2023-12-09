@@ -20,8 +20,8 @@
 
     function draw(event) {
        
-      xi = event.clientX - 7;
-      yi = event.clientY - 7;
+      xi = event.clientX - 8;
+      yi = event.clientY - 36;
       var mousePositions = document.getElementById('mousePositions');
       mousePositions.innerHTML = 'X coords: ' + xi + ', Y coords: ' + yi;
       
@@ -30,7 +30,9 @@
       var ctx2 = canvas.getContext("2d");
 
       if (drawingTool === "linea" && event.type === "mousedown") {
-        if (oldtool != "linea"){
+        console.log(oldtool);
+        if (oldtool != "linea" && oldtool != "stop"){
+           
            
             ctx.beginPath();//Si antes usamos otra herramienta o cambiamos de color se comienza una nueva linea, si no, se continúa
         }
@@ -60,7 +62,15 @@
       }
     }
 
+    function clearCanvas() {
+      var canvas = document.getElementById("myCanvas");
+      var ctx = canvas.getContext("2d");
+      ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpia el canvas completo
+      oldtool="pizarralimpia";
+    }
+
     function stopDrawing() {
+        oldtool="stop";
       // Puedes agregar código adicional si es necesario al soltar el botón del mouse
     }
   </script>
@@ -71,6 +81,7 @@
     <button onclick="setDrawingTool('linea')">Linea</button>
     <button onclick="setDrawingTool('lapiz')">Lapiz</button>
     <input type="color" id="colorPicker" onchange="setArcColor(this.value)">
+    <button onclick="clearCanvas()">Limpiar pizarra</button>
   </div>
   <div onmousedown="draw(event)" onmousemove="draw(event)" onmouseup="stopDrawing()">
     <canvas id="myCanvas" width="800" height="500" style="border:1px solid #d3d3d3;">
