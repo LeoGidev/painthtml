@@ -15,6 +15,7 @@
     }
     function setArcColor(color) {
       arcColor = color;
+      oldtool="cambioColor";//se le da un valor al oldtool para que cada vez que camie de color se haga una linea nueva
     }
 
     function draw(event) {
@@ -31,7 +32,7 @@
       if (drawingTool === "linea" && event.type === "mousedown") {
         if (oldtool != "linea"){
            
-            ctx.beginPath();//Si antes usamos el lapiz, se comienza una nueva linea, si no, se continúa
+            ctx.beginPath();//Si antes usamos otra herramienta o cambiamos de color se comienza una nueva linea, si no, se continúa
         }
         
         ctx2.arc(xi, yi, 1, 0.5, (Math.PI / 180) * 360, true);
@@ -41,7 +42,7 @@
     
       } else if (drawingTool === "lapiz" && event.type === "mousedown") {
         if (oldtool != "lapiz"){
-           ctx.beginPath();//Si antes usamos el lapiz, se comienza una nueva linea, si no, se continúa
+           ctx.beginPath();///Si antes usamos otra herramienta o cambiamos de color se comienza una nueva linea, si no, se continúa
        }
         ctx.arc(xi, yi, 1, 0.5, (Math.PI / 180) * 360, true);
         ctx.strokeStyle = arcColor; // Establecer el color del trazo
@@ -50,8 +51,8 @@
       } else if (drawingTool === "lapiz" && event.type === "mousemove" && event.buttons === 1) {
         if (oldtool != "lapiz"){
            
-           ctx.beginPath();//Si antes usamos el lapiz, se comienza una nueva linea, si no, se continúa
-       }
+        ctx.beginPath();///Si antes usamos otra herramienta o cambiamos de color se comienza una nueva linea, si no, se continúa
+        }
         ctx.arc(xi, yi, 1, 0.5, (Math.PI / 180) * 360, true);
         ctx.strokeStyle = arcColor; // Establecer el color del trazo
         ctx.stroke();
@@ -80,4 +81,3 @@
 </body>
 
 </html>
-
