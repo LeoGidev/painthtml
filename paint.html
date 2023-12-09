@@ -6,9 +6,13 @@
     var xi;
     var yi;
     var drawingTool = ""; // Variable para almacenar la herramienta seleccionada
+    var arcColor = "black"; // Color inicial del arco
 
     function setDrawingTool(tool) {
       drawingTool = tool;
+    }
+    function setArcColor(color) {
+      arcColor = color;
     }
 
     function draw(event) {
@@ -16,19 +20,22 @@
       yi = event.clientY - 7;
       var mousePositions = document.getElementById('mousePositions');
       mousePositions.innerHTML = 'X coords: ' + xi + ', Y coords: ' + yi;
-
+      
       var canvas = document.getElementById("myCanvas");
       var ctx = canvas.getContext("2d");
 
       if (drawingTool === "linea" && event.type === "mousedown") {
         ctx.arc(xi, yi, 1, 0.5, (Math.PI / 180) * 360, true);
+        ctx.strokeStyle = arcColor; // Establecer el color del trazo
         ctx.stroke();
     
       } else if (drawingTool === "lapiz" && event.type === "mousedown") {
         ctx.arc(xi, yi, 1, 0.5, (Math.PI / 180) * 360, true);
+        ctx.strokeStyle = arcColor; // Establecer el color del trazo
         ctx.stroke();
       } else if (drawingTool === "lapiz" && event.type === "mousemove" && event.buttons === 1) {
         ctx.arc(xi, yi, 1, 0.5, (Math.PI / 180) * 360, true);
+        ctx.strokeStyle = arcColor; // Establecer el color del trazo
         ctx.stroke();
       }
     }
@@ -43,6 +50,7 @@
   <div>
     <button onclick="setDrawingTool('linea')">Linea</button>
     <button onclick="setDrawingTool('lapiz')">Lapiz</button>
+    <input type="color" id="colorPicker" onchange="setArcColor(this.value)">
   </div>
   <div onmousedown="draw(event)" onmousemove="draw(event)" onmouseup="stopDrawing()">
     <canvas id="myCanvas" width="800" height="500" style="border:1px solid #d3d3d3;">
