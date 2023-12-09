@@ -31,8 +31,7 @@
 
       if (drawingTool === "linea" && event.type === "mousedown") {
         console.log(oldtool);
-        if (oldtool != "linea" && oldtool != "stop"){
-           
+        if (oldtool != "linea" ){
            
             ctx.beginPath();//Si antes usamos otra herramienta o cambiamos de color se comienza una nueva linea, si no, se continúa
         }
@@ -70,8 +69,11 @@
     }
 
     function stopDrawing() {
+        if(oldtool === "lapiz"){
         oldtool="stop";
-      // Puedes agregar código adicional si es necesario al soltar el botón del mouse
+        }
+    
+      // Lo que sucede al soltar el botón del mouse
     }
   </script>
 </head>
