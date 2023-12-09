@@ -20,12 +20,14 @@
       var canvas = document.getElementById("myCanvas");
       var ctx = canvas.getContext("2d");
 
-      if (drawingTool === "linea") {
-        ctx.beginPath();
-        ctx.moveTo(xi, yi);
+      if (drawingTool === "linea" && event.type === "mousedown") {
         ctx.arc(xi, yi, 1, 0.5, (Math.PI / 180) * 360, true);
         ctx.stroke();
-      } else if (drawingTool === "lapiz") {
+    
+      } else if (drawingTool === "lapiz" && event.type === "mousedown") {
+        ctx.arc(xi, yi, 1, 0.5, (Math.PI / 180) * 360, true);
+        ctx.stroke();
+      } else if (drawingTool === "lapiz" && event.type === "mousemove" && event.buttons === 1) {
         ctx.arc(xi, yi, 1, 0.5, (Math.PI / 180) * 360, true);
         ctx.stroke();
       }
@@ -49,6 +51,8 @@
   </div>
   <div id="mousePositions"></div>
 </body>
+
+</html>
 
 </html>
 
