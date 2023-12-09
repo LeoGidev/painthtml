@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<script>
+
+var xi;
+var yi;
+var x;
+
+function moveup(event){
+      xi = event.clientX-7;
+      yi = event.clientY-7;
+var mousePositions = document.getElementById('mousePositions');
+    mousePositions.innerHTML = 'X coords: '+xi+', Y coords: '+yi;
+
+
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+ctx.arc(xi,yi,1,0.5,(Math.PI/180)*360,true);
+ctx.stroke();
+
+
+}
+
+</script>
+</head>
+<body>
+<div onmousemove="moveup(event)">
+<canvas id="myCanvas"  width="800" height="500"
+style="border:1px solid #d3d3d3;">
+tu buscador no lo soporta
+</canvas>
+</div>
+<div id="mousePositions">
+</div>
+
+</body>
