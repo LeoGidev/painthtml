@@ -3,4 +3,4 @@
 <p>Pequeña práctica de HTML y JS</p>
 
 
-<img src="draw.png">
+<img src="paint.png">
