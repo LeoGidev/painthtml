@@ -1,6 +1,6 @@
-<h1>Paint con html</h1>
+# Paint Web
+## Este simple Paint para Pc es una práctica en js
 
-<p>Pequeña práctica de HTML y JS</p>
+![imagen ilustratuva](example1.png)
 
-
-<img src="paint.png">
+Puedes probarla en mi Portafolio:[ir](https://leogidev.free.nf/Practicas/Paint/)
